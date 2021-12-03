@@ -16,13 +16,16 @@ int BinarySearch (int num[], int size, int x)
         {
             return mid;
         }
-        else if (x < num[mid])
-        {
-            high = mid - 1;
-        }
         else
         {
-            low = mid + 1;
+            if (x < num[mid])
+            {
+                high = mid - 1;
+            }
+            else
+            {
+                low = mid + 1;
+            }
         }
     }
     
@@ -35,18 +38,20 @@ int BinarySearch (int arr[], int low, int high, int x)
     {
         int mid = ((low + high)/ 2);
 
-        if (arr[mid] == x)
+        if (x == arr[mid])
         {
             return mid;
         }
-
-        if (x < arr[mid])
-        {
-            return BinarySearch(arr, low, mid - 1, x);
-        }
         else
         {
-            return BinarySearch(arr, mid + 1, high, x);
+            if (x < arr[mid])
+            {
+                return BinarySearch(arr, low, mid - 1, x);
+            }
+            else
+            {
+                return BinarySearch(arr, mid + 1, high, x);
+            }
         }
     }
 
